@@ -29,11 +29,9 @@ jobs:
     displayName: 'Install dependencies'
 
   - script: |
-    apt-get -y install python3-pip
-    pip3 install pytest-cov
-    pip3 install pytest
     pip install pytest
-    pytest tests --doctest-modules --junitxml=junit/test-results.xml
+    pip install pytest-cov
+    pytest --junitxml=test-results.xml --cov . --cov-report xml:pytest-cov.xml
     displayName: 'pytest'
 
   - task: PublishTestResults@2
